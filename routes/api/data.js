@@ -155,6 +155,66 @@ router.post("/:profileId", auth, (req, res) => {
   }
 });
 
+// router.post("/:profileId", (req, res) => {
+//   console.log(req.body.placeName);
+//   const place = req.body.placeName;
+//   const desc = req.body.description;
+//   const image = req.body.image;
+
+//   if (!place || !desc || !image) {
+//     return res.status(400).json({ message: "Please fill up all the fields" });
+//   }
+
+//   // User.findById(req.params.profileId).then((data) => console.log(data));
+
+//   User.findById(req.params.profileId)
+//     .then((foundUser) => {
+//       return foundUser.name;
+//     })
+//     .then((name) => {
+//       const newFormData = new Form({
+//         name: name,
+//         placeName: place,
+//         description: desc,
+//         img: image,
+//       });
+
+//       newFormData.save().then((data) => {
+//         // console.log(data);
+//         return User.findOneAndUpdate(
+//           { _id: req.params.profileId },
+//           { $push: { images: data._id } },
+//           { new: true }
+//         )
+//           .then((data) => {
+//             console.log(data);
+//             res.status(200).json({ message: "Submitted Successfully" });
+//           })
+//           .catch((err) => {
+//             res.status(404).json({ message: "Error!!" });
+//           });
+//       });
+// });
+
+//     newFormData.save().then((data) => {
+//       console.log(data);
+//       // return User.findOneAndUpdate(
+//       //   { _id: req.params.profileId },
+//       //   { $push: { images: data._id } },
+//       //   { new: true }
+//       // )
+//       //   .then((data) => {
+//       //     res.status(200).json({ message: "Submitted Successfully!!" });
+//       //   })
+//       //   .catch((err) => {
+//       //     res.status(404).json({
+//       //       message:
+//       //         "Error Occured in submitting the form.PLease try again later",
+//       //     });
+//       //   });
+//     });
+// });
+
 router.delete("/:id", auth, (req, res) => {
   const id = req.params.id;
   const profileId = req.user.id;
